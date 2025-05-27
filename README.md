@@ -1,6 +1,6 @@
 # Contao Cloudflare Turnstile Bundle
 
-This Contao module overrides the default security questions/captcha form field with Turnstile.
+This Contao module overrides the default security questions/captcha form field with [Cloudflare Turnstile](https://www.cloudflare.com/application-services/products/turnstile/).
 
 ## Requirements
 
