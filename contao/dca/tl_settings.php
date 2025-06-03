@@ -6,7 +6,6 @@ PaletteManipulator::create()
     ->addLegend('turnstile_legend', 'files_legend', PaletteManipulator::POSITION_BEFORE)
     ->addField('turnstilePublicKey', 'turnstile_legend', PaletteManipulator::POSITION_APPEND)
     ->addField('turnstilePrivateKey', 'turnstile_legend', PaletteManipulator::POSITION_APPEND)
-    ->addField('turnstileGlobalThreshold', 'turnstile_legend', PaletteManipulator::POSITION_APPEND)
     ->applyToPalette('default', 'tl_settings');
 
 $GLOBALS['TL_DCA']['tl_settings']['fields'] += [
@@ -16,11 +15,6 @@ $GLOBALS['TL_DCA']['tl_settings']['fields'] += [
     ],
     'turnstilePrivateKey' => [
         'inputType' => 'text',
-        'eval' => ['tl_class' => 'w50'],
-    ],
-    'turnstileGlobalThreshold' => [
-        'inputType' => 'text',
-        'default' => '0.5',
         'eval' => ['tl_class' => 'w50'],
     ],
 ];

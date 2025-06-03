@@ -13,8 +13,6 @@ class FormTurnstile extends FormCaptcha
     protected $strTemplate = 'form_turnstile';
     protected ?string $publicKey = null;
     protected ?string $privateKey = null;
-    protected ?string $globalThreshold = null;
-    protected ?string $turnstileThreshold = null;
     protected ?string $turnstileAction = null;
 
     public function __construct($arrAttributes = null)
@@ -23,7 +21,6 @@ class FormTurnstile extends FormCaptcha
 
         $this->publicKey = Config::get('turnstilePublicKey');
         $this->privateKey = Config::get('turnstilePrivateKey');
-        $this->globalThreshold = Config::get('turnstileGlobalThreshold');
 
         $this->turnstileAction = FormModel::findById($this->pid)->alias;
         $this->turnstileAction = str_replace('-', '_', $this->turnstileAction);
@@ -76,18 +73,7 @@ class FormTurnstile extends FormCaptcha
                 throw new RuntimeException();
             }
 
-            $score = $parsed['score'];
-
-            $threshold = $this->turnstileThreshold ?: $this->globalThreshold;
-            if (!$threshold) {
-                $threshold = 0;
-            }
-
             if ($parsed['action'] && $parsed['action'] !== $this->turnstileAction) {
-                throw new RuntimeException();
-            }
-
-            if ($score < $threshold) {
                 throw new RuntimeException();
             }
         } catch (RuntimeException $e) {

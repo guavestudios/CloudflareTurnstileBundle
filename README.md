@@ -26,5 +26,4 @@ b) Add your Turnstile Site Key and Secret Key on `system/config/localconfig.php`
 ```PHP
 $GLOBALS['TL_CONFIG']['turnstilePublicKey'] = '<YOUR-SITE-KEY>';
 $GLOBALS['TL_CONFIG']['turnstilePrivateKey'] = '<YOUR-SECRET-KEY>';
-$GLOBALS['TL_CONFIG']['turnstileGlobalThreshold'] = 0.5;
 ```
