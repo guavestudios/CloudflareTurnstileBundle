@@ -8,26 +8,26 @@
     <div class="cf-turnstile"
          id="turnstile-<?= $this->strCaptchaKey ?>"
          data-sitekey="<?= $this->publicKey ?>"
-         data-callback="onSubmit_<?= $this->strCaptchaKey ?>"
-    ></div>
+         data-callback="onSubmit_<?= $this->strCaptchaKey ?>">
+    </div>
 
     <script src="https://challenges.cloudflare.com/turnstile/v0/api.js?onload=onloadTurnstileCallbackField<?= $this->strCaptchaKey ?>" defer async></script>
     <script>
         function onloadTurnstileCallbackField<?= $this->strCaptchaKey ?> () {
-            window.onSubmit_<?= $this->strCaptchaKey ?> = function () { };
+            window.onSubmit_<?= $this->strCaptchaKey ?> = function () { }
 
             turnstile
-                .execute('<?= $this->publicKey ?>', {action: '<?= $this->turnstileAction ?>'})
+                .execute('<?= $this->publicKey ?>', { action: '<?= $this->turnstileAction ?>' })
                 .then(function (token) {
-                    var node = document.getElementById('turnstile-<?= $this->strCaptchaKey ?>');
+                    var node = document.getElementById('turnstile-<?= $this->strCaptchaKey ?>')
 
-                    var input = document.createElement('input');
-                    input.setAttribute('type', 'hidden');
-                    input.setAttribute('name', 'cf-turnstile-response');
-                    input.setAttribute('value', token);
+                    var input = document.createElement('input')
+                    input.setAttribute('type', 'hidden')
+                    input.setAttribute('name', 'cf-turnstile-response')
+                    input.setAttribute('value', token)
 
-                    node.parentNode.replaceChild(input, node);
-                });
+                    node.parentNode.replaceChild(input, node)
+                })
         }
     </script>
 <?php $this->endblock(); ?>

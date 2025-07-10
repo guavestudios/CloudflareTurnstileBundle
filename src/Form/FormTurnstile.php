@@ -40,6 +40,7 @@ class FormTurnstile extends FormCaptcha
     {
         if ($this->useFallback()) {
             parent::validate();
+
             return;
         }
 

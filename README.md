@@ -1,6 +1,7 @@
 # Contao Cloudflare Turnstile Bundle
 
-This Contao module overrides the default security questions/captcha form field with [Cloudflare Turnstile](https://www.cloudflare.com/application-services/products/turnstile/).
+This Contao module overrides the default security questions/captcha form field
+with [Cloudflare Turnstile](https://www.cloudflare.com/application-services/products/turnstile/).
 
 ## Requirements
 
@@ -17,7 +18,8 @@ $ composer require guave/cloudflareturnstile-bundle
 
 There are two ways to add the configuration needed:
 
-a) Go to Settings in the Contao Backend and add your Turnstile Site Key and Secret Key under "Security: Cloudflare Turnstile"
+a) Go to Settings in the Contao Backend and add your Turnstile Site Key and Secret Key under "Security: Cloudflare
+Turnstile"
 
 or
 
