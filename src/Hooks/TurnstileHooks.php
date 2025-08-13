@@ -2,15 +2,13 @@
 
 namespace Guave\CloudflareTurnstileBundle\Hooks;
 
-use Contao\CoreBundle\ServiceAnnotation\Hook;
+use Contao\CoreBundle\DependencyInjection\Attribute\AsHook;
 use Contao\Widget;
 
-/**
- * @Hook("addCustomRegexp")
- */
+#[AsHook('addCustomRegexp')]
 class TurnstileHooks
 {
-    public function addTurnstileActionRegexp($regexpName, $value, Widget $widget): bool
+    public function __invoke($regexpName, $value, Widget $widget): bool
     {
         if ($regexpName !== 'turnstile') {
             return false;
