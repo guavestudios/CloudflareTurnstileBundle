@@ -2,3 +2,7 @@ services:
   _defaults:
     autoconfigure: true
     autowire: true
+
+  Guave\CloudflareTurnstileBundle\:
+    resource: ../src
+    exclude: ../src/{ContaoManager,DependencyInjection}
