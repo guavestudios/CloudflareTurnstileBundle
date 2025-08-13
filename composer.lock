@@ -1235,16 +1235,16 @@
         },
         {
             "name": "contao/core-bundle",
-            "version": "5.5.14",
+            "version": "5.5.15",
             "source": {
                 "type": "git",
                 "url": "https://github.com/contao/core-bundle.git",
-                "reference": "9772e2a2495369618b2ce36d951935e10f081401"
+                "reference": "f11ad6b581cf6cbdcf627d251d65779f0015a4e0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/contao/core-bundle/zipball/9772e2a2495369618b2ce36d951935e10f081401",
-                "reference": "9772e2a2495369618b2ce36d951935e10f081401",
+                "url": "https://api.github.com/repos/contao/core-bundle/zipball/f11ad6b581cf6cbdcf627d251d65779f0015a4e0",
+                "reference": "f11ad6b581cf6cbdcf627d251d65779f0015a4e0",
                 "shasum": ""
             },
             "require": {
@@ -1458,7 +1458,7 @@
                     "type": "other"
                 }
             ],
-            "time": "2025-08-13T07:53:26+00:00"
+            "time": "2025-08-13T14:11:04+00:00"
         },
         {
             "name": "contao/image",
