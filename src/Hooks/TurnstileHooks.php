@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Guave\CloudflareTurnstileBundle\Hooks;
 
 use Contao\CoreBundle\DependencyInjection\Attribute\AsHook;

@@ -1,19 +1,26 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Guave\CloudflareTurnstileBundle\Form;
 
 use Contao\Config;
 use Contao\FormCaptcha;
 use Contao\FormModel;
-use Contao\System;
+use Psr\Log\LoggerInterface;
 use RuntimeException;
 
 class FormTurnstile extends FormCaptcha
 {
     protected $strTemplate = 'form_turnstile';
-    protected ?string $publicKey = null;
-    protected ?string $privateKey = null;
-    protected ?string $turnstileAction = null;
+
+    protected string|null $publicKey = null;
+
+    protected string|null $privateKey = null;
+
+    protected string|null $turnstileAction = null;
+
+    private readonly LoggerInterface $logger;
 
     public function __construct($arrAttributes = null)
     {
@@ -29,11 +36,6 @@ class FormTurnstile extends FormCaptcha
         if ($this->useFallback()) {
             $this->strTemplate = 'form_captcha';
         }
-    }
-
-    protected function useFallback(): bool
-    {
-        return !$this->publicKey || !$this->privateKey;
     }
 
     public function validate(): void
@@ -67,8 +69,8 @@ class FormTurnstile extends FormCaptcha
 
             $parsed = json_decode($response, true, 512, JSON_THROW_ON_ERROR);
             if (!$parsed['success']) {
-                if (in_array('invalid-input-secret', $parsed['error-codes'], true)) {
-                    System::log('Cloudflare Turnstile private key is invalid.', __METHOD__, TL_CONFIGURATION);
+                if (\in_array('invalid-input-secret', $parsed['error-codes'], true)) {
+                    $this->logger->error('Cloudflare Turnstile private key is invalid.', [__METHOD__, $GLOBALS]);
                 }
 
                 throw new RuntimeException();
@@ -81,5 +83,10 @@ class FormTurnstile extends FormCaptcha
             $this->class = 'error';
             $this->addError($GLOBALS['TL_LANG']['ERR']['turnstile']);
         }
+    }
+
+    protected function useFallback(): bool
+    {
+        return !$this->publicKey || !$this->privateKey;
     }
 }
